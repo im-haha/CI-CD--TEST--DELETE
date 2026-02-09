@@ -10,22 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
-
       - run: npm ci
-
-      # 1) 格式检查（比如 prettier）
       - run: npm run format:check
-
-      # 2) 代码规范（eslint）
       - run: npm run lint
-
-      # 3) 类型检查（tsc）
       - run: npm run typecheck
-
-      # 4) 单测（可选）
-      - run: npm test --if-present
